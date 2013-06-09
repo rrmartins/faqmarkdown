@@ -1,1 +1,1 @@
-rvm --create 2.0.0@postmarkdown
+rvm --create 2.0.0@faqmarkdown
