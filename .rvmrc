@@ -1,1 +1,1 @@
-rvm --create ruby-2.0.0-p0@postmarkdown
+rvm --create 2.0.0@postmarkdown

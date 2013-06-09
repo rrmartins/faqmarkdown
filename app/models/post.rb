@@ -68,6 +68,12 @@ class Post
     metadata[:categories]
   end
 
+  def categories_to_url
+    categories = []
+    self.categories.each {|x| categories << x.to_url}
+    categories
+  end
+
   def date
     @date ||= Time.zone.parse(metadata[:date] || @date_str).to_date
   end
@@ -98,7 +104,7 @@ class Post
     def find_by_category(category=nil)
       posts = []
       all.select do |post|
-        posts << post if !post.categories.nil? and post.categories.include?(category)
+        posts << post if !post.categories.nil? and post.categories_to_url.include?(category)
       end
     end
 
@@ -107,7 +113,7 @@ class Post
       all.select do |post|
         post.categories.each {|x| categories << x} unless post.categories.nil?
       end
-      categories
+      categories.uniq
     end
 
     def directory
