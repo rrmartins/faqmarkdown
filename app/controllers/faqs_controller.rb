@@ -4,8 +4,6 @@ class FaqsController < ApplicationController
 
   def index
     collection
-    require 'pry'
-    binding.pry
     respond_to { |format| format.html }
   end
 
@@ -60,7 +58,7 @@ class FaqsController < ApplicationController
   def choose_layout
     if Faqmarkdown::Config.options[:use_theme]
       ActiveSupport::Deprecation.warn "`Faqmarkdown::Config.options[:use_theme]` is deprecated. Use `Faqmarkdown::Config.options[:layout] = 'faqmarkdown'` instead."
-      'Faqmarkdown'
+      'faqmarkdown'
     else
       Faqmarkdown::Config.options[:layout]
     end

@@ -33,7 +33,7 @@ The above command performs the following actions:
 
 ## Usage
 
-### Generate a new faq
+### Generate a new Faq
 
 Here's an example of how to generate a new faq using a slug and publish date:
 
@@ -49,9 +49,7 @@ Tag:
 
     <!--more-->
 
-### faq to categories
-
-Now, in version `0.1.0`, you can use categories in your faq.
+### Faq to categories
 
 To put your faq in some categories, use:
 

@@ -85,7 +85,7 @@ describe 'Faq views', :type => :request do
     before { visit faqs_path(:year => '2011') }
 
     it 'should show faqs inside the date range' do
-      page.should have_content('faq with full metadata')
+      page.should have_content('Faq with full metadata')
       page.should have_content('A Test Faq')
       page.should have_content('Image')
       page.should have_content('First Faq')
@@ -110,7 +110,7 @@ describe 'Faq views', :type => :request do
     before { visit faqs_path(:year => '2011', :month => '04', :day => '01') }
 
     it 'should show faqs inside the date range' do
-      page.should have_content('First faq')
+      page.should have_content('First Faq')
     end
 
     it 'should not show faqs outside the date range' do
@@ -194,7 +194,6 @@ describe 'Faq views', :type => :request do
     it 'should use the Faqmarkdown layout when using theme' do
       ActiveSupport::Deprecation.silence do
         Faqmarkdown::Config.options[:use_theme] = true
-        puts faqs_path
         visit faqs_path
         page.should have_content('A faqmarkdown faq')
         Faqmarkdown::Config.options[:use_theme] = false

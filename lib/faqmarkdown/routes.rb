@@ -7,7 +7,7 @@ class ActionDispatch::Routing::Mapper
     get "/#{options[:as]}(/:year(/:month(/:day)))" => 'faqs#index', as: :faqs, :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/}
     get "/#{options[:as]}/feed" => 'faqs#feed', as: :faqs_feed, :format => :xml
     get "/#{options[:as]}/*id" => 'faqs#show', as: :faq, :constraints => { :id => faqmarkdown_permalink_regex(options) }
-    # get "/#{options[:as]}/categoria/:category", as: 'faqs#faq_per_category', as: :faqs_category
+    get "/#{options[:as]}/categoria/:category" => 'faqs#faq_per_category', as: :faqs_category
 
     faqmarkdown_feed_title(options[:as])
   end
