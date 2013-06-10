@@ -1,5 +1,0 @@
-<img src="example.png" />
-
-<!--more-->
-
-Image description.
