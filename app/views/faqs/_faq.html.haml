@@ -1,0 +1,16 @@
+= content_tag_for :article, faq do
+  %header
+    %h1= link_to faq.title, faq
+    = image_tag faq.gravatar_url(:size => 32, :default => 'identicon'), :height => 32, :width => 32
+    .meta
+      Posted on
+      %time{:pubdate => 'true', :datetime => faq.timestamp.iso8601}
+        = faq.date.strftime '%e %B %Y'
+      %span
+        by
+        = faq.author
+  - if summary
+    = faq_summary_html faq
+    %p.more= link_to 'Read more&hellip;'.html_safe, faq
+  - else
+    ~ faq_content_html faq

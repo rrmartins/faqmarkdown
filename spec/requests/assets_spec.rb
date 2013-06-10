@@ -4,7 +4,7 @@ describe 'stylesheet', :type => :request do
   include RSpec::Rails::HelperExampleGroup
 
   def stylesheet_path
-    html = helper.stylesheet_link_tag 'postmarkdown/postmarkdown'
+    html = helper.stylesheet_link_tag 'faqmarkdown/faqmarkdown'
     Nokogiri::HTML.fragment(html).at('link')[:href]
   end
 

@@ -1,12 +1,12 @@
-# Postmarkdown
+# Faqmarkdown
 
-A simple Rails blog engine powered by Markdown.
+A simple Rails FAQ engine powered by Markdown.
 
-Postmarkdown is compatible with Rails 3 only and the gem is hosted on [RubyGems.org](http://rubygems.org/gems/postmarkdown).
+Faqmarkdown is compatible with Rails 3 only and the gem is hosted on [RubyGems.org](http://rubygems.org/gems/faqmarkdown).
 
 ## Features
 
-* Markdown files for blog posts
+* Markdown files for faq
 * No database
 * RSS Feed
 * Customizable Routes
@@ -17,53 +17,53 @@ Postmarkdown is compatible with Rails 3 only and the gem is hosted on [RubyGems.
 
 ## Installation
 
-Simply add Postmarkdown to your Gemfile and bundle it up:
+Simply add Faqmarkdown to your Gemfile and bundle it up:
 
-    gem 'postmarkdown'
+    gem 'faqmarkdown'
 
-Then, run the generator to setup Postmarkdown for your application:
+Then, run the generator to setup Faqmarkdown for your application:
 
-    $ rails generate postmarkdown:install
+    $ rails generate faqmarkdown:install
 
 The above command performs the following actions:
 
-* Create the directory `app/posts/`. This directory is where your markdown files will live.
-* Generate an example post using today's date, eg. `app/posts/2011-01-01-example-post.markdown`.
-* Add some routes. By default the routes are setup underneath the path `/posts/*`, to customize these routes check out the Customizing Routes section below.
+* Create the directory `app/faqs/`. This directory is where your markdown files will live.
+* Generate an example faq using today's date, eg. `app/faqs/2011-01-01-example-faq.markdown`.
+* Add some routes. By default the routes are setup underneath the path `/faqs/*`, to customize these routes check out the Customizing Routes section below.
 
 ## Usage
 
-### Generate a new Post
+### Generate a new faq
 
-Here's an example of how to generate a new post using a slug and publish date:
+Here's an example of how to generate a new faq using a slug and publish date:
 
-    $ rails generate postmarkdown:post test-post --date=2011-01-01
+    $ rails generate faqmarkdown:faq test-faq --date=2011-01-01
 
-The above command will create the file `app/posts/2011-01-01-test-post.markdown`, which you can edit and add content to.
+The above command will create the file `app/faqs/2011-01-01-test-faq.markdown`, which you can edit and add content to.
 
 ### Creating a brief summary
 
-In their markdown, place the tag below, and everything above it will appear at the summary of your post.
+In their markdown, place the tag below, and everything above it will appear at the summary of your faq.
 
 Tag:
 
     <!--more-->
 
-### Post to categories
+### faq to categories
 
-Now, in version `0.1.0`, you can use categories in your post.
+Now, in version `0.1.0`, you can use categories in your faq.
 
-To put your post in some categories, use:
+To put your faq in some categories, use:
 
     categories:
        - foo
        - bar
 
-This is an Array of their categories in the post.
+This is an Array of their categories in the faq.
 
 To list all categories, use:
 
-    Post.categories_all
+    faq.categories_all
 
 This will return:
 
@@ -71,27 +71,27 @@ This will return:
 
 To do a search for a particular category, do:
 
-    Post.find_by_category ('foo')
+    faq.find_by_category ('foo')
 
-This will return your posts that have a category named `foo`.
+This will return your faqs that have a category named `foo`.
 
-### View the Post
+### View the faq
 
-Open `http://localhost:3000/posts` in your browser and you should be able to navigate to your new post. The URL for your new post is `http://localhost:3000/posts/2011/01/01/test-post`.
+Open `http://localhost:3000/faqs` in your browser and you should be able to navigate to your new faq. The URL for your new faq is `http://localhost:3000/faqs/2011/01/01/test-faq`.
 
 ## Overriding Files
 
-The easiest way to customize the Postmarkdown functionality or appearance is by using the override generator. This generator can copy files from the Postmarkdown core and place them into your Rails app. For example:
+The easiest way to customize the Faqmarkdown functionality or appearance is by using the override generator. This generator can copy files from the Faqmarkdown core and place them into your Rails app. For example:
 
-    $ rails generate postmarkdown:override --all        # overrides all of the things
-    $ rails generate postmarkdown:override --controller # overrides `app/controllers/posts_controller.rb`
-    $ rails generate postmarkdown:override --model      # overrides `app/models/post.rb`
-    $ rails generate postmarkdown:override --views      # overrides all files in directory `app/views/posts/`
-    $ rails generate postmarkdown:override --theme      # overrides the layout and stylesheet
+    $ rails generate faqmarkdown:override --all        # overrides all of the things
+    $ rails generate faqmarkdown:override --controller # overrides `app/controllers/faqs_controller.rb`
+    $ rails generate faqmarkdown:override --model      # overrides `app/models/faq.rb`
+    $ rails generate faqmarkdown:override --views      # overrides all files in directory `app/views/faqs/`
+    $ rails generate faqmarkdown:override --theme      # overrides the layout and stylesheet
 
 ## RSS Feed
 
-Postmarkdown comes prepared with a fully functional RSS feed.
+Faqmarkdown comes prepared with a fully functional RSS feed.
 
 You can take advantage of the built-in feed by adding the feed link to your HTML head tag. For example, simply add the following to your default layout:
 
@@ -100,57 +100,57 @@ You can take advantage of the built-in feed by adding the feed link to your HTML
       <%= yield :head %>
     </head>
 
-To customize the feed title, add the following to an initializer (`config/initializers/postmarkdown.rb`):
+To customize the feed title, add the following to an initializer (`config/initializers/faqmarkdown.rb`):
 
-    Postmarkdown::Config.options[:feed_title] = 'Custom Blog Title Goes Here'
+    Faqmarkdown::Config.options[:feed_title] = 'Custom Faq Title Goes Here'
 
-To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', posts_feed_path %>`
+To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', faqs_feed_path %>`
 
 ## Customizing the layout
 
-By default, Postmarkdown will use your application's default layout, but if you wish to use a specific custom layout, you can set the following configuration in an initializer (`config/initializers/postmarkdown.rb`):
+By default, Faqmarkdown will use your application's default layout, but if you wish to use a specific custom layout, you can set the following configuration in an initializer (`config/initializers/faqmarkdown.rb`):
 
-    Postmarkdown::Config.options[:layout] = 'layout_name'
+    Faqmarkdown::Config.options[:layout] = 'layout_name'
 
 ### Built-in Theme
 
-Postmarkdown comes with minimal built-in theme for your convenience.
+Faqmarkdown comes with minimal built-in theme for your convenience.
 
-    Postmarkdown::Config.options[:layout] = 'postmarkdown'
+    Faqmarkdown::Config.options[:layout] = 'faqmarkdown'
 
 ## Customizing Routes
 
-By default Postmarkdown will setup all routes to go through the `/posts/*` path. For example:
+By default Faqmarkdown will setup all routes to go through the `/faqs/*` path. For example:
 
-    http://example.com/posts                      # lists all posts
-    http://example.com/posts/2011                 # lists all posts from 2011
-    http://example.com/posts/2011/01              # lists all posts from January 2011
-    http://example.com/posts/2011/01/01           # lists all posts from the 1st of January 2011
-    http://example.com/posts/2011/01/01/test-post # show the specified post
+    http://example.com/faqs                      # lists all faqs
+    http://example.com/faqs/2011                 # lists all faqs from 2011
+    http://example.com/faqs/2011/01              # lists all faqs from January 2011
+    http://example.com/faqs/2011/01/01           # lists all faqs from the 1st of January 2011
+    http://example.com/faqs/2011/01/01/test-faq # show the specified faq
 
-You can change the default route path by modifying the 'postmarkdown' line in `routes.rb`. For example:
+You can change the default route path by modifying the 'faqmarkdown' line in `routes.rb`. For example:
 
-    postmarkdown :as => :blog
+    faqmarkdown :as => :faq
 
 This will produce the following routes:
 
-    http://example.com/blog                      # lists all posts
-    http://example.com/blog/2011                 # lists all posts from 2011
-    http://example.com/blog/2011/01              # lists all posts from January 2011
-    http://example.com/blog/2011/01/01           # lists all posts from the 1st of January 2011
-    http://example.com/blog/2011/01/01/test-post # show the specified post
+    http://example.com/faq                      # lists all faqs
+    http://example.com/faq/2011                 # lists all faqs from 2011
+    http://example.com/faq/2011/01              # lists all faqs from January 2011
+    http://example.com/faq/2011/01/01           # lists all faqs from the 1st of January 2011
+    http://example.com/faq/2011/01/01/test-faq # show the specified faq
 
-You can also customize the `posts#show` route via the `:permalink_format` option:
+You can also customize the `faqs#show` route via the `:permalink_format` option:
 
-    postmarkdown :as => :blog, :permalink_format => :day   # URL: http://example.com/blog/2011/01/01/test-post
-    postmarkdown :as => :blog, :permalink_format => :month # URL: http://example.com/blog/2011/01/test-post
-    postmarkdown :as => :blog, :permalink_format => :year  # URL: http://example.com/blog/2011/test-post
-    postmarkdown :as => :blog, :permalink_format => :slug  # URL: http://example.com/blog/test-post
+    faqmarkdown :as => :faq, :permalink_format => :day   # URL: http://example.com/faq/2011/01/01/test-faq
+    faqmarkdown :as => :faq, :permalink_format => :month # URL: http://example.com/faq/2011/01/test-faq
+    faqmarkdown :as => :faq, :permalink_format => :year  # URL: http://example.com/faq/2011/test-faq
+    faqmarkdown :as => :faq, :permalink_format => :slug  # URL: http://example.com/faq/test-faq
 
-What about mapping Postmarkdown to root? We got you covered:
+What about mapping Faqmarkdown to root? We got you covered:
 
-    postmarkdown :as => ''
-    root :to => 'posts#index'
+    faqmarkdown :as => ''
+    root :to => 'faqs#index'
 
 ## Example Directory Structure
 
@@ -159,15 +159,15 @@ What about mapping Postmarkdown to root? We got you covered:
     │   ├── helpers
     │   ├── mailers
     │   ├── models
-    │   ├── posts (where your markdown files live)
+    │   ├── faqs (where your markdown files live)
     │   │   ├── 2011-04-01-example-1.markdown
     │   │   ├── 2011-04-02-example-2.markdown
     │   │   ├── 2011-04-03-example-3.markdown
     │   │   ├── 2011-04-04-example-4.markdown
     │   └── views
-    │       └── posts (overridable)
+    │       └── faqs (overridable)
     │           ├── _feed_link.html.haml
-    │           ├── _post.html.haml
+    │           ├── _faq.html.haml
     │           ├── feed.xml.builder
     │           ├── index.html.haml
     │           └── show.html.haml

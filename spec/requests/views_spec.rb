@@ -3,14 +3,14 @@ require 'spec_helper'
 describe 'views', :type => :request do
   context 'without application index view' do
     it 'should use internal view' do
-      visit '/posts'
-      page.should have_css 'section#posts'
+      visit '/faqs'
+      page.should have_css 'section#faqs'
       page.should_not have_content 'test application view'
     end
   end
 
   context 'with application index view' do
-    let(:view_path) { Rails.root + 'app/views/posts/index.html.haml' }
+    let(:view_path) { Rails.root + 'app/views/faqs/index.html.haml' }
 
     before do
       ApplicationController.view_paths.each(&:clear_cache)
@@ -26,9 +26,9 @@ describe 'views', :type => :request do
     end
 
     it 'should not use internal view' do
-      visit '/posts'
+      visit '/faqs'
       page.should have_content 'test application view'
-      page.should_not have_css 'section#posts'
+      page.should_not have_css 'section#faqs'
     end
   end
 end

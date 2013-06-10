@@ -1,0 +1,5 @@
+require 'faqmarkdown/engine'
+require 'faqmarkdown/config'
+require 'faqmarkdown/routes'
+require 'faqmarkdown/railtie'
+require 'faqmarkdown/util'

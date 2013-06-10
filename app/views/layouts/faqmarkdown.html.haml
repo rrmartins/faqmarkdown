@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title= Faqmarkdown::Util.app_name
+    = stylesheet_link_tag 'faqmarkdown/faqmarkdown'
+    = yield :head
+  %body
+    %header#header
+      %h1= link_to Faqmarkdown::Util.app_name, '/'
+      %p
+        A #{link_to 'faqmarkdown', 'https://github.com/rrmartins/faqmarkdown'} faq
+        - if Faq.last.try(:author)
+          = "by #{Faq.last.author}"
+    %section#content= yield
+    %footer
+      %small= "Copyright &copy; #{Date.today.year}".html_safe

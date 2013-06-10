@@ -1,0 +1,9 @@
+Description:
+  This generator will override either the Faq model, controller or views.
+
+Examples:
+  $ rails generate faqmarkdown:override --all        # overrides all of the things
+  $ rails generate faqmarkdown:override --controller # overrides file `app/controllers/faqs_controller.rb`
+  $ rails generate faqmarkdown:override --model      # overrides file `app/models/faq.rb`
+  $ rails generate faqmarkdown:override --views      # overrides all files in directory `app/views/faqs/`
+  $ rails generate faqmarkdown:override --theme      # overrides the layout and stylesheet

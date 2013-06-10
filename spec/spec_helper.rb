@@ -4,7 +4,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup :default, :development
 
-require 'postmarkdown'
+require 'faqmarkdown'
 
 require 'rails/version'
 if Rails::VERSION::MAJOR == 3 && Rails::VERSION::MINOR == 0
@@ -20,7 +20,7 @@ require 'capybara/rails'
 
 require 'timecop'
 require 'generator_spec/test_case'
-Dir[File.expand_path('lib/generators/postmarkdown/*.rb')].each { |f| require f }
+Dir[File.expand_path('lib/generators/faqmarkdown/*.rb')].each { |f| require f }
 
 require 'delorean'
 
@@ -31,7 +31,7 @@ RSpec.configure do |config|
 
   config.after do
     Timecop.return
-    FileUtils.rm_rf('spec/tmp/app/posts/.')
+    FileUtils.rm_rf('spec/tmp/app/faqs/.')
   end
 end
 

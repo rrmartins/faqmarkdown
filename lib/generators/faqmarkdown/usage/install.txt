@@ -1,0 +1,10 @@
+Description:
+  This generator will create the directory structure and routes required by Faqmarkdown. As an added bonus, it will create an example Faq for the current date.
+
+Example:
+  $ rails generate faqmarkdown:install
+
+  This will:
+    - Create the directory `app/faqs/`.
+    - Generate an example Faq using today's date: `app/faqs/{{CURRENT_DATE}}-example-faq.markdown`.
+    - Add default routes.
