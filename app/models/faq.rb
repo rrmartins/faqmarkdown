@@ -69,6 +69,10 @@ class Faq
     metadata[:categories]
   end
 
+  def action
+    metadata[:action]
+  end
+
   def categories_to_url
     categories = []
     self.categories.each {|x| categories << x.to_url}

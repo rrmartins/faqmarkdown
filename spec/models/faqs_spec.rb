@@ -55,6 +55,11 @@ describe Faq do
     its(:email) { should == 'john.smith@example.com' }
   end
 
+  context 'with action' do
+    subject { test_faq '2011-05-01-full-metadata.markdown' }
+    its(:action) { should == 'for-you' }
+  end
+
   context "with categories" do
     subject { test_faq '2011-05-01-full-metadata.markdown' }
     its(:categories) { should == ['full', 'metadata']}

@@ -13,7 +13,7 @@ module Faqmarkdown
     end
 
     def add_routes
-      insert_into_file 'config/routes.rb', "  faqmarkdown :as => :faqs\n\n", :after => "::Application.routes.draw do\n"
+      insert_into_file 'config/routes.rb', "\n  faqmarkdown :as => :faqs\n", :after => "::Application.routes.draw do\n"
     end
   end
 end
